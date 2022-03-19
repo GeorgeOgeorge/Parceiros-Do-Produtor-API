@@ -1,4 +1,3 @@
-from pyexpat import model
 from rest_framework import serializers
 import datetime
 
@@ -21,10 +20,16 @@ class FarmerSerializer(serializers.ModelSerializer):
             'age',
             'phone',
             'sex',
+            'active',
+            'created',
+            'updated',
             'properties'
         ]
         extra_kargs = {
-            'cpf': {'write_only': True}
+            'cpf': {'write_only': True},
+            'created': {'read_only': True},
+            'updated': {'read_only': True},
+            'properties': {'read_only': True}
         }
 
     def validate_age(self, value):
@@ -74,8 +79,16 @@ class PropertieSerializer(serializers.ModelSerializer):
             'phone',
             'longitude',
             'latitude',
+            'active',
+            'created',
+            'updated',
             'animals'
         ]
+        extra_kargs = {
+            'created': {'read_only': True},
+            'updated': {'read_only': True},
+            'properties': {'read_only': True}
+        }
 
     def validate_name(self, value):
         if len(value) in range(5, 255):
@@ -109,8 +122,16 @@ class AnimalSerializer(serializers.ModelSerializer):
             'furr_color'
             'purchased',
             'birth_date',
+            'active',
+            'created',
+            'updated',
             'milkings'
         ]
+        extra_kargs = {
+            'created': {'read_only': True},
+            'updated': {'read_only': True},
+            'properties': {'read_only': True}
+        }
 
     def validate_name(self, value):
         if len(value) in range(3, 255):
@@ -156,7 +177,9 @@ class AnimalSerializer(serializers.ModelSerializer):
             datetime.datetime.strptime(value, '%Y-%m-%d')
             return value
         except:
-            raise serializers.ValidationError('correct date format is yyyy-mm-dd')
+            raise serializers.ValidationError(
+                'correct date format is yyyy-mm-dd')
+
 
 class MilkingSerializer(serializers.ModelSerializer):
 
@@ -168,20 +191,30 @@ class MilkingSerializer(serializers.ModelSerializer):
             'date',
             'shift',
             'dry'
+            'active',
+            'created',
+            'updated',
         ]
+        extra_kargs = {
+            'created': {'read_only': True},
+            'updated': {'read_only': True},
+            'properties': {'read_only': True}
+        }
 
     def validate_value(self, value):
         if value is not None:
             return value
         else:
-            raise serializers.ValidationError('must specify amount collected during milking, if none specify as 0')
-    
+            raise serializers.ValidationError(
+                'must specify amount collected during milking, if none specify as 0')
+
     def validate_date(self, value):
         try:
             datetime.datetime.strptime(value, '%Y-%m-%d')
             return value
         except:
-            raise serializers.ValidationError('correct date format is yyyy-mm-dd')
+            raise serializers.ValidationError(
+                'correct date format is yyyy-mm-dd')
 
     def validate_shift(self, value):
         if value is not None:

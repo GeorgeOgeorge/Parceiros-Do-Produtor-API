@@ -1,6 +1,3 @@
-from enum import unique
-from tabnanny import verbose
-from venv import create
 from django.db import models
 
 from django.conf import settings
