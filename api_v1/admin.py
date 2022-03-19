@@ -12,7 +12,7 @@ class FarmerAdmin(admin.ModelAdmin):
         'sex',
         'active',
         'created',
-        'updated'
+        'updated',
         'properties'
     ]
 
@@ -26,8 +26,8 @@ class PropertieAdmin(admin.ModelAdmin):
         'latitude',
         'active',
         'created',
-        'updated'
-        'animals'
+        'updated',
+        'animals',
     ]
 
 
@@ -38,13 +38,13 @@ class AnimalAdmin(admin.ModelAdmin):
         'sex',
         'breed',
         'code',
-        'furr_color'
+        'furr_color',
         'purchased',
         'birth_date',
         'active',
         'created',
-        'updated'
-        'milkings'
+        'updated',
+        'milkings',
     ]
 
 
@@ -54,8 +54,8 @@ class MilkingAdmin(admin.ModelAdmin):
         'value',
         'date',
         'shift',
-        'dry'
+        'dry',
         'active',
         'created',
-        'updated'
+        'updated',
     ]

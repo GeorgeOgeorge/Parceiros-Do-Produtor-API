@@ -39,7 +39,7 @@ class FarmerSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('age must be between 18 to 100')
 
     def validate_phone(self, value):
-        if len(value) is 11:
+        if len(value) == 11:
             return value
         else:
             raise serializers.ValidationError('phone must be 11 characters')
@@ -51,7 +51,7 @@ class FarmerSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('name must be between 3 to 255')
 
     def validate_cpf(self, value):
-        if len(value) is 11:
+        if len(value) == 11:
             return value
         else:
             raise serializers.ValidationError('CPF must have 11 characters')
@@ -97,7 +97,7 @@ class PropertieSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('name must be between 5 to 255')
 
     def validate_phone(self, value):
-        if len(value) is 10:
+        if len(value) == 10:
             return value
         else:
             raise serializers.ValidationError('phone must be 10 characters')
