@@ -9,6 +9,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '0.0.0.0'
+    'https://amigos-do-produtor.herokuapp.com',
+    '127.0.0.1'
 ]
 
 
