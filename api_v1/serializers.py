@@ -29,7 +29,8 @@ class FarmerSerializer(serializers.ModelSerializer):
             'cpf': {'write_only': True},
             'created': {'read_only': True},
             'updated': {'read_only': True},
-            'properties': {'read_only': True}
+            'properties': {'read_only': True},
+            'active': {'read_only': True}
         }
 
     def validate_age(self, value):

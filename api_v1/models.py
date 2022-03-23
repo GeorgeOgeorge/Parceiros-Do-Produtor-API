@@ -25,7 +25,7 @@ class Farmer(Base):
     age = models.PositiveSmallIntegerField(blank=False)
     cpf = models.CharField(blank=False,  max_length=11, unique=True)
     phone = models.CharField(blank=False, max_length=11, unique=True)
-    sex = models.BooleanField(blank=False)
+    sex = models.CharField(blank=False, max_length=11, unique=False)
 
     class Meta:
         ordering = ['id']
