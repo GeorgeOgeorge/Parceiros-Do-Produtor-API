@@ -43,12 +43,10 @@ class Propertie(Base):
         on_delete=models.CASCADE
     )
     name = models.CharField(blank=False, max_length=255)
-    size = models.DecimalField(blank=False, max_digits=1000, decimal_places=1)
+    size = models.DecimalField(blank=False, max_digits=100, decimal_places=1)
     phone = models.CharField(blank=False, max_length=11, unique=True)
-    longitude = models.DecimalField(
-        blank=False, max_length=22, decimal_places=16, max_digits=10000)
-    latitude = models.DecimalField(
-        blank=False, max_length=22, decimal_places=16, max_digits=10000)
+    longitude = models.DecimalField(blank=False, decimal_places=16, max_digits=1000)
+    latitude = models.DecimalField(blank=False, decimal_places=16, max_digits=1000)
 
     class Meta:
         ordering = ['id']

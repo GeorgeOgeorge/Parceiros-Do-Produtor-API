@@ -41,8 +41,8 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=255)),
                 ('size', models.DecimalField(decimal_places=1, max_digits=1000)),
                 ('phone', models.CharField(max_length=11, unique=True)),
-                ('longitude', models.DecimalField(decimal_places=16, max_digits=10000, max_length=22)),
-                ('latitude', models.DecimalField(decimal_places=16, max_digits=10000, max_length=22)),
+                ('longitude', models.DecimalField(decimal_places=16, max_digits=1000, max_length=22)),
+                ('latitude', models.DecimalField(decimal_places=16, max_digits=1000, max_length=22)),
                 ('farmer', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='properties', to='api_v1.farmer')),
             ],
             options={
