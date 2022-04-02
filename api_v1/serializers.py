@@ -76,10 +76,12 @@ class PropertieSerializer(serializers.ModelSerializer):
         model = Propertie
         fields = [
             'id',
+            'farmer',
             'name',
             'phone',
             'longitude',
             'latitude',
+            'size',
             'active',
             'created',
             'updated',
@@ -117,10 +119,11 @@ class AnimalSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
+            'propertie',
             'sex',
             'breed',
             'code',
-            'furr_color'
+            'furr_color',
             'purchased',
             'birth_date',
             'active',
@@ -189,9 +192,10 @@ class MilkingSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'value',
+            'animal',
             'date',
             'shift',
-            'dry'
+            'dry',
             'active',
             'created',
             'updated',
