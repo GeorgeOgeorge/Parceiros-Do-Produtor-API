@@ -1,7 +1,7 @@
 from rest_framework import serializers
 import datetime
 
-from .models import Farmer, Animal, Milking, Propertie
+from .models import Farmer, Animal, Milking, Propertie, Herd
 
 
 class FarmerSerializer(serializers.ModelSerializer):
@@ -66,10 +66,10 @@ class FarmerSerializer(serializers.ModelSerializer):
 
 class PropertieSerializer(serializers.ModelSerializer):
 
-    animals = serializers.HyperlinkedRelatedField(
+    herds = serializers.HyperlinkedRelatedField(
         many=True,
         read_only=True,
-        view_name='animal-detail'
+        view_name='herd-detail'
     )
 
     class Meta:
@@ -85,7 +85,7 @@ class PropertieSerializer(serializers.ModelSerializer):
             'active',
             'created',
             'updated',
-            'animals'
+            'herds'
         ]
         extra_kargs = {
             'created': {'read_only': True},
@@ -106,6 +106,35 @@ class PropertieSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('phone must be 10 characters')
 
 
+class HerdSerializer(serializers.ModelSerializer):
+
+    animals = serializers.HyperlinkedRelatedField(
+        many=True,
+        read_only=True,
+        view_name='animal-detail'
+    )
+
+    class Meta:
+        model = Herd
+        fields = [
+            'id',
+            'propertie',
+            'name',
+            'animal_type',
+            'warning',
+            'log',
+            'identified_animals',
+            'active',
+            'created',
+            'updated',
+            'animals'
+        ]
+        extra_kargs = {
+            'created': {'read_only': True},
+            'updated': {'read_only': True},
+            'animals': {'read_only': True},
+        }
+
 class AnimalSerializer(serializers.ModelSerializer):
 
     milkings = serializers.HyperlinkedRelatedField(
@@ -119,7 +148,7 @@ class AnimalSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
-            'propertie',
+            'herd',
             'sex',
             'breed',
             'code',
@@ -175,14 +204,6 @@ class AnimalSerializer(serializers.ModelSerializer):
         else:
             raise serializers.ValidationError(
                 'must specify is animal is purchased')
-
-    def validate_birth_date(self, value):
-        try:
-            datetime.datetime.strptime(value, '%Y-%m-%d')
-            return value
-        except:
-            raise serializers.ValidationError(
-                'correct date format is yyyy-mm-dd')
 
 
 class MilkingSerializer(serializers.ModelSerializer):

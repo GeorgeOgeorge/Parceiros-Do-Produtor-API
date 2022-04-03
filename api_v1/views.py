@@ -1,10 +1,7 @@
 from rest_framework import viewsets
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework import status
 
-from .models import Animal, Farmer, Milking, Propertie
-from .serializers import AnimalSerializer, FarmerSerializer, MilkingSerializer, PropertieSerializer
+from .models import Animal, Farmer, Milking, Propertie, Herd
+from .serializers import AnimalSerializer, FarmerSerializer, MilkingSerializer, PropertieSerializer, HerdSerializer
 
 
 class FarmerViewSet(viewsets.ModelViewSet):
@@ -16,6 +13,10 @@ class PropertieViewSet(viewsets.ModelViewSet):
     queryset = Propertie.objects.all()
     serializer_class = PropertieSerializer
 
+
+class HerdViewSet(viewsets.ModelViewSet):
+    queryset = Herd.objects.all()
+    serializer_class = HerdSerializer
 
 class AnimalViewSet(viewsets.ModelViewSet):
     queryset = Animal.objects.all()

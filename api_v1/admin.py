@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Farmer, Propertie, Animal, Milking
+from .models import Farmer, Propertie, Animal, Milking, Herd
 
 
 @admin.register(Farmer)
@@ -27,7 +27,22 @@ class PropertieAdmin(admin.ModelAdmin):
         'active',
         'created',
         'updated',
-        'animals',
+        'herds',
+    ]
+
+
+@admin.register(Herd)
+class HerdAdmin(admin.ModelAdmin):
+    list_display = [
+        'name',
+        'animal_type',
+        'warning',
+        'log',
+        'identified_animals',
+        'active',
+        'created',
+        'updated',
+        'animals'
     ]
 
 
