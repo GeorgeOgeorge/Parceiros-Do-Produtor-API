@@ -253,3 +253,9 @@ class MilkingSerializer(serializers.ModelSerializer):
             return value
         else:
             raise serializers.ValidationError('must speficy if animal is dry')
+
+
+class AutenticacaoSerializer(serializers.Serializer):
+    usuario = serializers.CharField()
+    email = serializers.EmailField()
+    senha = serializers.CharField()

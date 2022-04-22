@@ -1,12 +1,10 @@
-from django.db import router
+from django.urls import path
+from rest_framework.urlpatterns import format_suffix_patterns
 
-from rest_framework.routers import SimpleRouter
+from .views import login
 
-from .views import FarmerViewSet, AnimalViewSet, MilkingViewSet, PropertieViewSet, HerdViewSet
+urlpatterns = [
+    path('login/', login)
+]
 
-router = SimpleRouter()
-router.register('farmers', FarmerViewSet)
-router.register('properties', PropertieViewSet)
-router.register('animals', AnimalViewSet)
-router.register('milkings', MilkingViewSet)
-router.register('herds', HerdViewSet)
+urlpatterns = format_suffix_patterns(urlpatterns)
