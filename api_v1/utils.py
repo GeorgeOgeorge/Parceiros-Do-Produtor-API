@@ -1,4 +1,6 @@
 from config import settings
+from django.utils.deprecation import MiddlewareMixin
+
 
 class DisableCSRF(MiddlewareMixin):
    def process_request(self, request):

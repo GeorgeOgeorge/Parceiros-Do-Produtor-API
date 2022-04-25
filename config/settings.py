@@ -9,7 +9,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
-    'amigos-do-produtor.herokuapp.com',
+    'parceiros-do-produtor.herokuapp.com',
     '127.0.0.1'
 ]
 
@@ -34,10 +34,11 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'api_v1.utils.DisableCSRF',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -64,10 +65,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd94b1u99g91nt6',
-        'USER': 'apynuhlckzeuie',
-        'PASSWORD': '3667a818e0516511bd65e81d871a43376c25250c0d819b2cc6b0cda13c15f19e',
-        'HOST': 'ec2-3-222-204-187.compute-1.amazonaws.com',
+        'NAME': 'dcm5l9c26osjf3',
+        'USER': 'wjwbzebtcflkkn',
+        'PASSWORD': 'd64843af5d77025b3da912cc300c49f6d8729e006511ba83b5287efac9c5c6bf',
+        'HOST': 'ec2-54-80-123-146.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -121,7 +122,9 @@ REST_FRAMEWORK = {
         'rest_framework.throttling.UserRateThrottle'
     ],
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '5/minute',
-        'user': '10/minute'
+        'anon': '10/minute',
+        'user': '1000/minute'
     }
 }
+
+AUTH_USER_MODEL = 'api_v1.Farmer'

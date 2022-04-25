@@ -1,76 +1,9 @@
 from django.contrib import admin
 
-from .models import Farmer, Propertie, Animal, Milking, Herd
+from .models import Farmer, Animal, Milking, Production, Property
 
-
-@admin.register(Farmer)
-class FarmerAdmin(admin.ModelAdmin):
-    list_display = [
-        'name',
-        'age',
-        'phone',
-        'sex',
-        'active',
-        'created',
-        'updated',
-        'properties'
-    ]
-
-
-@admin.register(Propertie)
-class PropertieAdmin(admin.ModelAdmin):
-    list_display = [
-        'name',
-        'phone',
-        'longitude',
-        'latitude',
-        'active',
-        'created',
-        'updated',
-        'herds',
-    ]
-
-
-@admin.register(Herd)
-class HerdAdmin(admin.ModelAdmin):
-    list_display = [
-        'name',
-        'animal_type',
-        'warning',
-        'log',
-        'identified_animals',
-        'active',
-        'created',
-        'updated',
-        'animals'
-    ]
-
-
-@admin.register(Animal)
-class AnimalAdmin(admin.ModelAdmin):
-    list_display = [
-        'name',
-        'sex',
-        'breed',
-        'code',
-        'furr_color',
-        'purchased',
-        'birth_date',
-        'active',
-        'created',
-        'updated',
-        'milkings',
-    ]
-
-
-@admin.register(Milking)
-class MilkingAdmin(admin.ModelAdmin):
-    list_display = [
-        'value',
-        'date',
-        'shift',
-        'dry',
-        'active',
-        'created',
-        'updated',
-    ]
+admin.site.register(Farmer)
+admin.site.register(Property)
+admin.site.register(Production)
+admin.site.register(Animal)
+admin.site.register(Milking)
